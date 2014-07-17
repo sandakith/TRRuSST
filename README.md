@@ -1,4 +1,4 @@
-RuSST (Trust and Review based Recommendation tool-sUite for Service Selection Testing)
+TRRuSST (Trust and Review based Recommendation tool-sUite for Service Selection Testing)
 ========================================================================================
 
 TRRuSST is a project for evaluating trustworthiness of online software services
