@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<marketConfig>
+
+	<property>
+		<name>AppsArcadeTopSellingPaid</name>
+		<type>App</type>
+		<url>https://play.google.com/store/apps/category/</url>
+		<urlValue>CARDS/collection/topselling_free</urlValue>
+		<navigation>?start=0</navigation>
+		<navigationValue>24</navigationValue>
+		<location>a[class=title]</location>
+		<locationValue>title</locationValue>
+	</property>
+
+<!--	 
+	<property>
+		<name>AppsArcadeTopSellingPaid</name>
+		<type>App</type>
+		<url>https://play.google.com/store/apps/category/</url>
+		<urlValue>ARCADE/collection/topselling_free</urlValue>
+		<navigation>?start=0</navigation>
+		<navigationValue>24</navigationValue>
+		<location>a[class=title]</location>
+		<locationValue>title</locationValue>
+	</property>
+	-->	
+	
+</marketConfig>

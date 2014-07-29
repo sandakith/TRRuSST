@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- 
+ItemId
+ItemName 
+ItemDeveloper 
+ItemDeveloperRating 
+ItemAvgRating 
+RatingCount 
+LastUpdate 
+NumOfInstalls 
+ItemPrice 
+ItemStarRatings(5,4,3,2,1) 
+ItemSize 
+CurrentVersion 
+ContentRating 
+ItemUserReviews(User, date, phone, version, starValue, Caption, Body) 
+-->
+
+<appConfig>
+	<property>
+		<name>ItemId</name>
+		<type>doc-url</type>
+		<location>self</location>
+		<locationValue></locationValue>
+	</property>
+	<property>
+		<name>ItemName</name>
+		<type>doc-tytle</type>
+		<location>self</location>
+		<locationValue></locationValue>
+	</property>
+	<property>
+		<name>ItemDeveloper</name>
+		<type>a-class</type>
+		<location>doc-header-link</location>
+		<locationValue>text</locationValue>
+	</property>
+	<property>
+		<name>ItemDeveloperRating</name>
+		<type>div-available-text</type>
+		<location>badges-badge-title</location>
+		<locationValue></locationValue>
+	</property>
+	<property>
+		<name>ItemAvgRating</name>
+		<type>div-text</type>
+		<location>average-rating-value</location>
+		<locationValue></locationValue>
+	</property>
+	<property>
+		<name>RatingCount</name>
+		<type>node-itemprop</type>
+		<location>span</location>
+		<locationValue>ratingCount</locationValue>
+	</property>
+	<property>
+		<name>LastUpdate</name>
+		<type>node-itemprop</type>
+		<location>time</location>
+		<locationValue>datePublished</locationValue>
+	</property>
+	<property>
+		<name>NumOfInstalls</name>
+		<type>node-itemprop</type>
+		<location>dd</location>
+		<locationValue>numDownloads</locationValue>
+	</property>
+	<property>
+		<name>ItemPrice</name>
+		<type>node-itemprop</type>
+		<location>dd</location>
+		<locationValue>offers</locationValue>
+	</property>
+	<property>
+		<name>ItemStarRatings</name>
+		<type>multiple</type>
+		<location>select,multi-select,select,select</location>
+		<locationValue>div[class*=histogram-table],tr,td[class*=bar],span:not([class])
+		</locationValue>
+	</property>
+	<property>
+		<name>ItemSize</name>
+		<type>node-itemprop</type>
+		<location>dd</location>
+		<locationValue>fileSize</locationValue>
+	</property>
+	<property>
+		<name>CurrentVersion</name>
+		<type>node-itemprop</type>
+		<location>dd</location>
+		<locationValue>softwareVersion</locationValue>
+	</property>
+	<property>
+		<name>ContentRating</name>
+		<type>node-itemprop</type>
+		<location>dd</location>
+		<locationValue>contentRating</locationValue>
+	</property>
+	<property>
+		<name>ItemUserReviews</name>
+		<type>multiple-posts</type>
+		<location>select,multi-param,limit</location>
+		<locationValue>itemLocation,reviewSortOrder=2;reviewType=1;pageNum=1,10</locationValue>
+	</property>
+</appConfig>
