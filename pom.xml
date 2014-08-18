@@ -11,8 +11,7 @@
     <name>Service Recommender Multi Module Parent Project</name>
 
     <modules>
-        <module>DroidDB</module>
-        <module>AmazonDB</module>
+        <module>TrDataSets</module>
         <module>TrServiceRecommender</module>
         <module>TrReviewScraper</module>
     </modules>
