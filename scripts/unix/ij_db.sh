@@ -1,8 +1,9 @@
+#!/bin/sh
 # Default DB Path
-# SET DB_PATH=%TruSST_ROOT%\DroidDataSet
+# SET DB_PATH=%TruSST_ROOT%\TrDataSets
 
-# Weather DB Path
-export DB_PATH=$TRRuSST_ROOT\DroidDataSet\derbyDB\weatherAppDB
+# Derby DB Path
+export DB_PATH=$TRRuSST_ROOT\TrDataSets\AmazonDB\DerbyDB
 
 
 cd $DB_PATH
