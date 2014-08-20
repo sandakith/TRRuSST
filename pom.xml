@@ -8,7 +8,7 @@
     <artifactId>ServiceRecommender</artifactId>
     <packaging>pom</packaging>
     <version>1.0</version>
-    <name>Service Recommender Multi Module Parent Project</name>
+    <name>Trust and Review-based Service Recommender Project</name>
 
     <modules>
         <module>TrDataSets</module>
