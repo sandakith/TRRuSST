@@ -9,9 +9,6 @@ import org.trusst.utils.DDSUtils;
 
 public class WebScraperTest extends TestCase{
 
-	public WebScraperTest() {
-	}
-
 	@Test
 	public void scrapper_getMultiplePostsFromMultipleSelects_Test() {
 

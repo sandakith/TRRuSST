@@ -20,7 +20,7 @@ public class DBConstants {
     public static final boolean FLAG_AMAZON_DB_POPULATION   = false ;
 
     // Amazon Dataset File Location Details
-    public static final String FILE_AZ_DB_SOFTWARE          = "AzSoftware.txt" ;
-    public static final String FILE_AZ_DB_SOFTWARE_TEST     = "AzSoftwareTest.txt" ;
+    public static final String FILE_AZ_DB_SOFTWARE          = "./AmazonDB/AzSoftware.txt" ;
+    public static final String FILE_AZ_DB_SOFTWARE_TEST     = "./AmazonDB/AzSoftwareTest.txt" ;
 
 }
