@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- 
+ItemId          : doc-url (split)
+ItemName        : doc- title (split)
+ItemDeveloper   : doc.select("a[class=document-subtitle primary").first().text()
+ItemDeveloperRating : doc.select("span[class=badge-title").first().text()
+ItemAvgRating   : doc.select("div[class=score").first().text() OR doc.select("div[class=tiny-star star-rating-non-editable-container").first().attrib("aria-label")
+RatingCount     : doc.select("div[class=stars-count").first().text()
+LastUpdate      : doc.select("div[itemprop=datePublished").first().text()
+NumOfInstalls   : doc.select("div[itemprop=numDownloads").first().text()
+ItemPrice       : doc.select("meta[itemprop=price").first().attrib("content")
+ItemStarRatings(5,4,3,2,1) :
+ItemSize        : doc.select("div[itemprop=fileSize").first().text()
+CurrentVersion  : doc.select("div[itemprop=softwareVersion").first().text()
+ContentRating   : doc.select("div[itemprop=contentRating").first().text()
+ItemUserReviews(User, date, phone, version, starValue, Caption, Body)
+                :
+-->
+
+<appConfig>
+	<property>
+		<name>ItemId</name>
+		<type>doc-url</type>
+		<location>self</location>
+		<locationValue></locationValue>
+	</property>
+	<property>
+		<name>ItemName</name>
+		<type>doc-tytle</type>
+		<location>self</location>
+		<locationValue></locationValue>
+	</property>
+	<property>
+		<name>ItemDeveloper</name>
+		<type>a-class</type>
+		<location>document-subtitle primary</location>
+		<locationValue>text</locationValue>
+	</property>
+	<property>
+		<name>ItemDeveloperRating</name>
+		<type>node-select-text</type>
+		<location>span,class</location>
+		<locationValue>badge-title</locationValue>
+	</property>
+	<property>
+		<name>ItemAvgRating</name>
+		<type>node-select-text</type>
+		<location>div,class</location>
+		<locationValue>score</locationValue>
+	</property>
+	<property>
+		<name>RatingCount</name>
+		<type>node-select-text</type>
+		<location>div,class</location>
+		<locationValue>stars-count</locationValue>
+	</property>
+	<property>
+		<name>LastUpdate</name>
+		<type>node-select-text</type>
+		<location>div,itemprop</location>
+		<locationValue>datePublished</locationValue>
+	</property>
+	<property>
+		<name>NumOfInstalls</name>
+		<type>node-select-text</type>
+		<location>div,itemprop</location>
+		<locationValue>numDownloads</locationValue>
+	</property>
+	<property>
+		<name>ItemPrice</name>
+		<type>node-select-attr</type>
+		<location>meta,itemprop</location>
+		<locationValue>price,content</locationValue>
+	</property>
+	<property>
+		<name>ItemSize</name>
+		<type>node-select-text</type>
+		<location>div,itemprop</location>
+		<locationValue>fileSize</locationValue>
+	</property>
+	<property>
+		<name>CurrentVersion</name>
+		<type>node-select-text</type>
+		<location>div,itemprop</location>
+		<locationValue>softwareVersion</locationValue>
+	</property>
+	<property>
+		<name>ContentRating</name>
+		<type>node-select-text</type>
+		<location>div,itemprop</location>
+		<locationValue>contentRating</locationValue>
+	</property>
+    <property>
+        <name>ItemFiveStarRating</name>
+        <type>multiple</type>
+        <location>select,select</location>
+        <locationValue>div[class*=rating-bar-container five],span[class*=bar-number]</locationValue>
+    </property>
+    <property>
+        <name>ItemFourStarRating</name>
+        <type>multiple</type>
+        <location>select,select</location>
+        <locationValue>div[class*=rating-bar-container four],span[class*=bar-number]</locationValue>
+    </property>
+    <property>
+        <name>ItemThreeStarRating</name>
+        <type>multiple</type>
+        <location>select,select</location>
+        <locationValue>div[class*=rating-bar-container three],span[class*=bar-number]</locationValue>
+    </property>
+    <property>
+        <name>ItemTwoStarRating</name>
+        <type>multiple</type>
+        <location>select,select</location>
+        <locationValue>div[class*=rating-bar-container two],span[class*=bar-number]</locationValue>
+    </property>
+    <property>
+        <name>ItemOneStarRating</name>
+        <type>multiple</type>
+        <location>select,select</location>
+        <locationValue>div[class*=rating-bar-container one],span[class*=bar-number]</locationValue>
+    </property>
+	<property>
+		<name>ItemUserReviews</name>
+		<type>multiple-posts</type>
+		<location>select,multi-param,limit</location>
+		<locationValue>itemLocation,reviewSortOrder=2;reviewType=1;pageNum=1,5</locationValue>
+	</property>
+    <!--property>
+        doc.select("div[itemprop=operatingSystems").first().text()
+        <name>androidVersion</name>
+        <type>node-itemprop</type>
+        <location>dd</location>
+        <locationValue>softwareVersion</locationValue>
+    </property-->
+
+</appConfig>
+
+<!--
+Rating Count :
+
+-->
