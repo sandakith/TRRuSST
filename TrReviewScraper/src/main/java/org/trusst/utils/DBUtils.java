@@ -20,7 +20,7 @@ import org.trusst.market.item.AppItem;
 
 public class DBUtils {
 
-	private static String dbLocation = "dsmDB";
+	private static String dbLocation = "droidReviewDB";
 	//private static String dbURL = "jdbc:derby:";
 	private static String dbURL = "jdbc:derby://localhost:1527/";
 	private static Connection conn = null;
@@ -50,8 +50,7 @@ public class DBUtils {
 	
 	private static boolean incertMarketItem(Connection conn, MarketItem item ){
 		// Create Star ratings array
-		String[] starRatings = item.getStarRatings().split(",");
-		
+
 		String sql = "insert into APP.MarketItem " +
 				"(id, " +
 				"recordDate, " +
@@ -81,17 +80,17 @@ public class DBUtils {
 				"'" + (item.getItemDeveloperRating()).replaceAll("[^a-zA-Z0-9]+","") + "', " + 
 				"'" + (item.getItemAvgRating()).replaceAll("[^a-zA-Z0-9]+","") + "', " +  
 				"'" + (item.getRatingCount()).replaceAll("[^a-zA-Z0-9]+","") + "', " +  
-				"'" + (item.getLastUpdate()).replaceAll("[^a-zA-Z0-9]+","") + "', " +  
+				"'" + (item.getLastUpdate()).replaceAll("[^a-zA-Z0-9 ]+","") + "', " +
 				"'" + (item.getNumOfDownloads()).replaceAll("[^a-zA-Z0-9]+","") + "', " +  
 				"'" + (item.getItemPrice()).replaceAll("[^a-zA-Z0-9]+","") + "', " +  
 				"'" + (item.getItemSize()).replaceAll("[^a-zA-Z0-9]+","") + "', " +  
 				"'" + (item.getCurrentVersion()).replaceAll("[^a-zA-Z0-9]+","") + "', " +  
 				"'" + (item.getContentRating()).replaceAll("[^a-zA-Z0-9]+","") + "', " +  
-				"'" + (starRatings[0]).replaceAll("[^a-zA-Z0-9]+","") + "', " +  
-				"'" + (starRatings[1]).replaceAll("[^a-zA-Z0-9]+","") + "', " +  
-				"'" + (starRatings[2]).replaceAll("[^a-zA-Z0-9]+","") + "', " +  
-				"'" + (starRatings[3]).replaceAll("[^a-zA-Z0-9]+","") + "', " +  
-				"'" + (starRatings[4]).replaceAll("[^a-zA-Z0-9]+","") + "')";
+				"'" + (item.getFiveStarRatings()).replaceAll("[^a-zA-Z0-9]+","") + "', " +
+				"'" + (item.getFourStarRatings()).replaceAll("[^a-zA-Z0-9]+","") + "', " +
+				"'" + (item.getThreeStarRatings()).replaceAll("[^a-zA-Z0-9]+","") + "', " +
+				"'" + (item.getTwoStarRatings()).replaceAll("[^a-zA-Z0-9]+","") + "', " +
+				"'" + (item.getOneStarRatings()).replaceAll("[^a-zA-Z0-9]+","") + "')";
 		int numRows = executeUpdate(conn,sql);
 		return ((numRows == 1) ? true : false );
 	}

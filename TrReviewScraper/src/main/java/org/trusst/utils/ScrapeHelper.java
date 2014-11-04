@@ -15,7 +15,8 @@ public class ScrapeHelper {
 
 	public static String getTitleFromDocument(Document doc) {
 		String title = (doc!=null)?doc.title():"none";
-		return title;
+        String[] titleText = title.split("-");
+		return titleText[0].trim();
 	}
 
 	public static String getTextFromDivID(Element doc, String divID){
@@ -48,10 +49,11 @@ public class ScrapeHelper {
 	}
 
 	// TODO : Replace the above two by this common method
-	public static String getTextFromNodeSelect(Element doc, String node, String locaiton, String locationValue) {
-		Element element = doc.select(node+"["+locaiton+"="+locationValue+"]").first();
+	public static String getTextFromNodeSelect(Element doc, String location, String locationValue) {
+        String[] locations = location.split(",");
+        Element element = doc.select(locations[0]+"["+locations[1]+"="+locationValue+"]").first();
 		String result = (element!=null)?element.text():"none";
-		return result;
+		return result.trim();
 	}
 	
 	public static String getTextFromNodeIfAvailable(Element doc) {
@@ -64,10 +66,12 @@ public class ScrapeHelper {
 		return result.toString();
 	}
 	
-	public static String getValueFromNodeAttr(Element doc, String node, String locaiton, String locationValue, String attrib) {
-		Element element = doc.select(node+"["+locaiton+"="+locationValue+"]").first();
-		String result = (element!=null)?element.attr(attrib):"none";
-		return result;
+	public static String getValueFromNodeAttr(Element doc, String location, String locationValue) {
+        String[] locations = location.split(",");
+        String[] locationValues = locationValue.split(",");
+		Element element = doc.select(locations[0]+"["+locations[1]+"="+locationValues[0]+"]").first();
+		String result = (element!=null)?element.attr(locationValues[1]):"none";
+		return result.trim();
 	}
 	
 	public static String getMultipleTextFromMultipleSelects(Document doc, String location,	String locationValue) {
@@ -80,15 +84,15 @@ public class ScrapeHelper {
 		for (int i = 0; i < locations.length; i++) {
 			if (locations[i].equals("select")){
 				currentElement = currentElement.select(locationValues[i]).first();
-				if (currentElement!=null) {
-					valueList.append((currentElement.text().replaceAll(",", ""))+",");
-				}else {
-					return "none,none,none,none,none,";
-				}
 			}else if(locations[i].equals("multi-select")){
 				return getMultipleTextFromSingleSelects(currentElement, locationValues[i], locationValue.split(locationValues[i]+",")[1]);
 			}
 		}
+        if (currentElement!=null) {
+            valueList.append(currentElement.text());
+        }else {
+            return "none";
+        }
 		return valueList.toString(); 
 	}
 
@@ -174,12 +178,12 @@ public class ScrapeHelper {
 
 	  		  for (Iterator<Element> iterator = reviewElems.iterator(); iterator.hasNext();) {
 				Element element = (Element) iterator.next();
-						reviewBuffer.append(getTextFromNodeSelect(element,"span", "class", "doc-review-author")+" :: ");
-						reviewBuffer.append(getTextFromNodeSelect(element,"span", "class", "doc-review-date")+" :: ");
+						reviewBuffer.append(getTextFromNodeSelect(element,"span,class", "doc-review-author")+" :: ");
+						reviewBuffer.append(getTextFromNodeSelect(element,"span,class", "doc-review-date")+" :: ");
 						reviewBuffer.append(getTextFromNodeIfAvailable(element)+" :: ");
-						reviewBuffer.append(getValueFromNodeAttr(element,"div", "class", "ratings goog-inline-block", "title")+" :: ");
-						reviewBuffer.append(getTextFromNodeSelect(element,"h4", "class", "review-title")+" :: ");
-						reviewBuffer.append(getTextFromNodeSelect(element,"p", "class", "review-text")+" :: ");
+						reviewBuffer.append(getValueFromNodeAttr(element,"div,class", "ratings goog-inline-block,title")+" :: ");
+						reviewBuffer.append(getTextFromNodeSelect(element,"h4,class", "review-title")+" :: ");
+						reviewBuffer.append(getTextFromNodeSelect(element,"p,class", "review-text")+" :: ");
 						reviewBuffer.append(" :::: ");
 			  }
 			}

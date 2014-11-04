@@ -38,9 +38,16 @@ public class AppItemBuilder implements MarketItemBuilder {
 				appItem.setNumOfDownloads(itemPart.getValue());
 			} else if (DDSConstants.ITEM_PRICE.equals(itemPart.getName())) {
 				appItem.setItemPrice(itemPart.getValue());
-			} else if (DDSConstants.ITEM_STAR_RATINGS
-					.equals(itemPart.getName())) {
-				appItem.setStarRatings(itemPart.getValue());
+			} else if (DDSConstants.ITEM_FIVE_STAR_RATING.equals(itemPart.getName())) {
+				appItem.setFiveStarRatings(itemPart.getValue());
+            } else if (DDSConstants.ITEM_FOUR_STAR_RATING.equals(itemPart.getName())) {
+                appItem.setFourStarRatings(itemPart.getValue());
+            } else if (DDSConstants.ITEM_THREE_STAR_RATING.equals(itemPart.getName())) {
+                appItem.setThreeStarRatings(itemPart.getValue());
+            } else if (DDSConstants.ITEM_TWO_STAR_RATING.equals(itemPart.getName())) {
+                appItem.setTwoStarRatings(itemPart.getValue());
+            } else if (DDSConstants.ITEM_ONE_STAR_RATING.equals(itemPart.getName())) {
+                appItem.setOneStarRatings(itemPart.getValue());
 			} else if (DDSConstants.ITEM_SIZE.equals(itemPart.getName())) {
 				appItem.setItemSize(itemPart.getValue());
 			} else if (DDSConstants.ITEM_CURRENT_VERSION.equals(itemPart

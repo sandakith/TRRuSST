@@ -13,10 +13,10 @@ public class DDSConstants {
 	public static final String MARKET_MOVIE = "Movie";
 	
 	// Navigating Constants 
-	public static final String  MARKET_CONFIG_PATH = "./config/MarketConfig.xml";
-	public static final String  APP_CONFIG_PATH = "./config/AppConfig.xml";
-	public static final String  MARKET_TEST_CONFIG_PATH = "./src/test/java/org/trusst/config/MarketConfig.xml";
-	public static final String  APP_TEST_CONFIG_PATH = "./src/test/java/org/trusst/config/AppConfig.xml";
+	public static final String  MARKET_CONFIG_PATH = "./config/work/MarketConfig.xml";
+	public static final String  APP_CONFIG_PATH = "./config/work/AppConfig.xml";
+	public static final String  MARKET_TEST_CONFIG_PATH = "./config/test/MarketConfig.xml";
+	public static final String  APP_TEST_CONFIG_PATH = "./config/test/AppConfig.xml";
 	
 	// Scraping Constants
 	public static final String SCRAPE_URL = "doc-url";
@@ -25,8 +25,12 @@ public class DDSConstants {
 	public static final String SCRAPE_DIV_AVAILABLE_TEXT = "div-available-text";
 	public static final String SCRAPE_A_CLASS = "a-class"; 
 	public static final String SCRAPE_NODE_ITEMPROP = "node-itemprop";
+    // General Scraping Constants
+    public static final String SCRAPE_NODE_SELECT_TEXT = "node-select-text";
+    public static final String SCRAPE_NODE_SELECT_ATTR = "node-select-attr";
 	public static final String SCRAPE_MULTIPLE = "multiple";
 	public static final String SCRAPE_POST_MULTIPLE = "multiple-posts";
+
 
 	// Item Constants 
 	public static final String ITEM_ID = "ItemId"; 
@@ -38,8 +42,12 @@ public class DDSConstants {
 	public static final String ITEM_LAST_UPDATE = "LastUpdate"; 
 	public static final String ITEM_NO_OF_INSTALLS = "NumOfInstalls"; 
 	public static final String ITEM_PRICE = "ItemPrice"; 
-	public static final String ITEM_STAR_RATINGS = "ItemStarRatings"; 
-	public static final String ITEM_USER_REVIEWS = "ItemUserReviews"; 
+	public static final String ITEM_FIVE_STAR_RATING = "ItemFiveStarRating";
+    public static final String ITEM_FOUR_STAR_RATING = "ItemFourStarRating";
+    public static final String ITEM_THREE_STAR_RATING = "ItemThreeStarRating";
+    public static final String ITEM_TWO_STAR_RATING = "ItemTwoStarRating";
+    public static final String ITEM_ONE_STAR_RATING = "ItemOneStarRating";
+    public static final String ITEM_USER_REVIEWS = "ItemUserReviews";
 	
 	// App Constants
 	public static final String ITEM_SIZE = "ItemSize";
@@ -50,15 +58,11 @@ public class DDSConstants {
 	public static final String NAV_START_OP_EQ = "start="; 
 
 	//Test Scenario Constants 
-	public static final String TEST_APP_LOCATION = "https://play.google.com/store/apps/details?id=com.livares.kiddiedoodle.mal";
+	//public static final String TEST_APP_LOCATION = "https://play.google.com/store/apps/details?id=com.livares.kiddiedoodle.mal";
+    public static final String TEST_APP_LOCATION = "https://play.google.com/store/apps/details?id=com.yahoo.mobile.client.android.weather";
+    //public static final String TEST_APP_LOCATION = "https://play.google.com/store/apps/details?id=com.accuweather.paid.android";
 	//public static final String TEST_APP_LOCATION = "https://play.google.com/store/apps/details?id=com.shake.charge"; (They Removed )
-	//public static final String TEST_APP_LOCATION = "https://play.google.com/store/apps/details?id=com.booking";
-	//public static final String TEST_APP_LOCATION = "https://play.google.com/store/apps/details?id=com.dxys.quna";
-	//public static final String TEST_APP_LOCATION = "https://play.google.com/store/apps/details?id=com.weather.Weather";
-	//public static final String TEST_APP_LOCATION = "https://play.google.com/store/apps/details?id=com.accuweather.android";
-	//public static final String TEST_APP_LOCATION = "https://play.google.com/store/apps/details?id=org.cocos2dx.SnowBros1";
-	//public static final String TEST_APP_LOCATION = "https://play.google.com/store/apps/details?id=appinventor.ai_billscott92787.KiddieDRAW";
-	//public static final String TEST_APP_LOCATION = "https://play.google.com/store/apps/details?id=com.androidmedaapps.stickarts";
+
 	
 
 
