@@ -1,7 +1,9 @@
 package org.trusst.utils;
 
 import java.io.IOException;
+import java.util.HashMap;
 import java.util.Iterator;
+import java.util.Map;
 
 import org.jsoup.Connection.Method;
 import org.jsoup.Jsoup;
@@ -112,7 +114,7 @@ public class ScrapeHelper {
 	}
 	
 	// TODO Decouple this with review selects
-	public static String getMultiplePostsFromMultipleSelects(String link, Document doc, String location,	String locationValue) {
+	public static String getMultiplePostsFromMultipleSelects(String link, Document doc, String location, String locationValue) {
 		String[] locations = location.split(",");
 		String[] locationValues = locationValue.split(",");
 
@@ -137,54 +139,64 @@ public class ScrapeHelper {
 				reviewPageLimits = Integer.parseInt(locationValues[i]);
 			}
 		}
-		
-		try {
-		  int currentPageLimit = 1;
+        int reviewCount = 0; // keep track of the number of reviews for each app
+        Map<String,String> reviewMap = new HashMap<String,String>(); // Check for the duplicates
+
+        try {
+		  // Why this exists : int currentPageLimit = 1;
 		  for (int k=0;k<reviewPageLimits;k++) {
 			  String currentLocation = valueLocation.toString();
 			  currentLocation =  currentLocation.substring(0,currentLocation.length()-1)  + k ;
 			//Document newDoc = Jsoup.connect(valueLocation.toString()).post();
-			String body = Jsoup.connect(currentLocation).method(Method.POST).execute().body();
-			int startIndex = body.indexOf("\\u003C");
-			int endIndex = body.indexOf("\",\"numPages");
-			
+			String body = Jsoup.connect(currentLocation).method(Method.POST).ignoreContentType(true).execute().body();
+			int startIndex = body.indexOf("\\u003c");
+            int endIndex = body.indexOf("\",",startIndex);
+			//int endIndex = body.indexOf("]\n]",startIndex);
 
 			Elements reviewElems = null;
 			
 			if (startIndex < 0 || endIndex < 0){
 				reviewElems = doc.getElementsByClass("doc-review");
 			}else {
-				
-				
+
 				if (k == 0){
-					//Current Reveiw Index Calculation 
-					String reviewIndex = body.substring(endIndex, body.length());
-					int startReviewIndex = reviewIndex.indexOf(":");
-					int endReviewIndex = reviewIndex.indexOf("}");
-					String currentPageLimitsString = reviewIndex.substring(startReviewIndex+1, endReviewIndex);
-					currentPageLimit = Integer.parseInt(currentPageLimitsString);
+					//Current Reveiw Index Calculation // TODO : Refactor the code
+//					String reviewIndex = body.substring(endIndex, body.length());
+//					int startReviewIndex = reviewIndex.indexOf(":");
+//					int endReviewIndex = reviewIndex.indexOf("}");
+//					String currentPageLimitsString = reviewIndex.substring(startReviewIndex+1, endReviewIndex);
+//					currentPageLimit = Integer.parseInt(currentPageLimitsString);
 				}else {
-					if (currentPageLimit < k ){break;}
+					// TODO Check this
+					// if (currentPageLimit < k ){break;}
 				}
-						
+		        // Recreate the content of the page
 				String reviewContent = body.substring(startIndex, endIndex);
-				reviewContent = reviewContent.replace("\\u003C\\", "<");
-				reviewContent = reviewContent.replace("\\u003C", "<");
+				reviewContent = reviewContent.replace("\\u003c\\", "<");
+				reviewContent = reviewContent.replace("\\u003c", "<");
+                reviewContent = reviewContent.replace("\\u003e\\", ">");
+                reviewContent = reviewContent.replace("\\u003e", ">");
 				reviewContent = reviewContent.replace("\\\"", "\"");
+                reviewContent = reviewContent.replace("\\u003d\\", "=");
+                reviewContent = reviewContent.replace("\\u003d", "=");
 
 				Document passedReviews = Jsoup.parse(reviewContent);
-				reviewElems = passedReviews.getElementsByClass("doc-review");
-			
+				reviewElems = passedReviews.getElementsByClass("single-review");
+                reviewCount += reviewElems.size(); // Update the review count
 
-	  		  for (Iterator<Element> iterator = reviewElems.iterator(); iterator.hasNext();) {
-				Element element = (Element) iterator.next();
-						reviewBuffer.append(getTextFromNodeSelect(element,"span,class", "doc-review-author")+" :: ");
-						reviewBuffer.append(getTextFromNodeSelect(element,"span,class", "doc-review-date")+" :: ");
-						reviewBuffer.append(getTextFromNodeIfAvailable(element)+" :: ");
-						reviewBuffer.append(getValueFromNodeAttr(element,"div,class", "ratings goog-inline-block,title")+" :: ");
-						reviewBuffer.append(getTextFromNodeSelect(element,"h4,class", "review-title")+" :: ");
-						reviewBuffer.append(getTextFromNodeSelect(element,"p,class", "review-text")+" :: ");
+                for (Iterator<Element> iterator = reviewElems.iterator(); iterator.hasNext();) {
+				        Element element = (Element) iterator.next();
+						reviewBuffer.append(getTextFromNodeSelect(element,"span,class", "author-name")+" :: ");
+						reviewBuffer.append(getTextFromNodeSelect(element,"span,class", "review-date")+" :: ");
+						//reviewBuffer.append(getTextFromNodeIfAvailable(element)+" :: "); // Update : Phone details are not available now
+                        reviewBuffer.append("none"+" :: "); // TODO : remove this
+						reviewBuffer.append(getValueFromNodeAttr(element,"div,class", "tiny-star star-rating-non-editable-container,aria-label")+" :: ");
+						reviewBuffer.append(getTextFromNodeSelect(element,"span,class", "review-title")+" :: ");
+						reviewBuffer.append(getTextFromNodeSelect(element,"div,class", "review-body")+" :: ");
+                        //TODO : Add the developer reply to the DB also (if exists)
 						reviewBuffer.append(" :::: ");
+                    // Update the HashMap
+                    reviewMap.put(getTextFromNodeSelect(element,"span,class", "author-name"),getTextFromNodeSelect(element,"span,class", "review-title"));
 			  }
 			}
 		  }
@@ -195,8 +207,8 @@ public class ScrapeHelper {
 			// Continue printing the stack trace 
 			e.printStackTrace();
 		}
-		
-		return reviewBuffer.toString(); 
+        System.out.println("Current Review Count : " + reviewCount);
+        return reviewBuffer.toString();
 	}
 
 	public static String getIdFromURL(String link) {

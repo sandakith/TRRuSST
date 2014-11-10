@@ -57,11 +57,15 @@ public class DDSConstants {
 	// Navigation Operators 
 	public static final String NAV_START_OP_EQ = "start="; 
 
-	//Test Scenario Constants 
-	//public static final String TEST_APP_LOCATION = "https://play.google.com/store/apps/details?id=com.livares.kiddiedoodle.mal";
-    public static final String TEST_APP_LOCATION = "https://play.google.com/store/apps/details?id=com.yahoo.mobile.client.android.weather";
+	//Test Scenario Constants
+
+   // public static final String TEST_APP_LOCATION = "https://play.google.com/store/apps/details?id=com.livares.keralahangouts"; // (Has Only 1 review)
+    //public static final String TEST_APP_LOCATION = "https://play.google.com/store/apps/details?id=com.zagmoid.blocks3d";        // (Has Only 2 pages of reviews)
+    public static final String TEST_APP_LOCATION = "https://play.google.com/store/apps/details?id=com.zagmoid.carrom3d";        // Has two full pages
+    //public static final String TEST_APP_LOCATION = "https://play.google.com/store/apps/details?id=com.livares.kiddiedoodle.mal";
+    //public static final String TEST_APP_LOCATION = "https://play.google.com/store/apps/details?id=com.yahoo.mobile.client.android.weather";
     //public static final String TEST_APP_LOCATION = "https://play.google.com/store/apps/details?id=com.accuweather.paid.android";
-	//public static final String TEST_APP_LOCATION = "https://play.google.com/store/apps/details?id=com.shake.charge"; (They Removed )
+	//public static final String TEST_APP_LOCATION = "https://play.google.com/store/apps/details?id=com.shake.charge"; (They Removed)
 
 	
 

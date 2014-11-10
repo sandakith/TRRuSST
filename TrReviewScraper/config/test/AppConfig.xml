@@ -125,19 +125,16 @@ ItemUserReviews(User, date, phone, version, starValue, Caption, Body)
 		<name>ItemUserReviews</name>
 		<type>multiple-posts</type>
 		<location>select,multi-param,limit</location>
-		<locationValue>itemLocation,reviewSortOrder=2;reviewType=1;pageNum=1,5</locationValue>
+		<locationValue>itemLocation,reviewSortOrder=2;reviewType=0;xhr=1;pageNum=0,5</locationValue>
 	</property>
-    <!--property>
-        doc.select("div[itemprop=operatingSystems").first().text()
-        <name>androidVersion</name>
-        <type>node-itemprop</type>
-        <location>dd</location>
-        <locationValue>softwareVersion</locationValue>
-    </property-->
+    <!--
+        pageNum	0
+        reviewSortOrder	2 Helpfullness
+        reviewSortOrder	0 Newest
+        reviewSortOrder	1 Rating
+        reviewType	0 Do not know
+        version	282 Newest Version With out this for All version
+        xhr	1 Do not know
+    -->
 
 </appConfig>
-
-<!--
-Rating Count :
-
--->
