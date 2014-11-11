@@ -5,7 +5,6 @@ drop table APP.MarketItemReviews;
 create table APP.MarketItem 
    (
 	  id					int not null, 
---	  itemType 				varchar(40) not null,
 	  recordDate			varchar(100) not null, 
 	  ItemId				varchar(100) not null, 
 	  ItemName				varchar(100) not null, 
@@ -33,11 +32,11 @@ alter table app.MarketItem add constraint mi_id unique (id);
 create table APP.MarketItemReviews 
    (
 	  id				int not null, 
-	  recordDate			varchar(100) not null, 	  
+	  recordDate		varchar(100) not null, 	  
 	  reviewItemId		int not null,
+	  reviewUserId		varchar(100) not null, 
 	  reviewUser		varchar(100) not null, 
 	  reviewDate		varchar(100) not null,
-	  reviewPhone		varchar(100) not null, 	  
 	  reviewStarValue	varchar(100) not null,
 	  reviewHeading 	varchar(100) not null,
 	  reviewBody 		varchar(3000) not null	  
