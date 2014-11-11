@@ -15,6 +15,10 @@ import org.jsoup.select.Elements;
 
 public class ScrapeHelper {
 
+    // TODO : refactor this page
+    // Categorize scraping methods as : USED / DEPRECATED
+    // Extend this and create a Droid Marketplace Scrape Helper
+
 	public static String getTitleFromDocument(Document doc) {
 		String title = (doc!=null)?doc.title():"none";
         String[] titleText = title.split("-");
@@ -32,7 +36,7 @@ public class ScrapeHelper {
 		if (elementsById.size() > 0) {
 			Element element = elementsById.first();
 			String result = element.text();
-			return result;		
+			return result;
 		} else {
 			return "none";
 		}
@@ -57,6 +61,32 @@ public class ScrapeHelper {
 		String result = (element!=null)?element.text():"none";
 		return result.trim();
 	}
+
+    public static String getAttributeFromMultipleSelect(Element doc, String location, String locationValue) {
+        String[] locations = location.split(",");
+        String[] locationValues = locationValue.split(",");
+        Element element = doc.select(locations[0]+"["+locations[1]+"="+locationValues[0]+"]").first();
+        element = element.select(locations[2]+"["+locations[3]+"]").first();
+        String result = (element!=null)?element.attr(locations[3]):"none";
+        return result.trim();
+    }
+
+    public static String getTextFromMultipleSelect(Element doc, String location, String locationValue) {
+        String[] locations = location.split(",");
+        String[] locationValues = locationValue.split(",");
+        Element currentElement = doc ; // Space to store the current element
+        int counter = 0;
+        for (int i = 0; i < (locations.length) ; i=+2) { // Location will be always a multiple of two
+            if (currentElement == null){
+                break;
+            } else {
+                currentElement = currentElement.select(locations[i] + "[" + locations[i + 1] + "=" + locationValues[counter] + "]").first();
+                counter += 1;
+            }
+        }
+        String result = (currentElement!=null)?currentElement.text():"none";
+        return result.trim();
+    }
 	
 	public static String getTextFromNodeIfAvailable(Element doc) {
 		StringBuffer result = new StringBuffer();
@@ -112,7 +142,13 @@ public class ScrapeHelper {
 		}
 		return valueList.toString(); 
 	}
-	
+
+    public static String getReviewAuthorIDFromMultipleSelect(Element doc, String location, String locationValue) {
+        String result = getAttributeFromMultipleSelect(doc,location,locationValue);
+        String author_id = (result!=null)?(result.split("=")[1]):"none";
+        return author_id.trim();
+    }
+
 	// TODO Decouple this with review selects
 	public static String getMultiplePostsFromMultipleSelects(String link, Document doc, String location, String locationValue) {
 		String[] locations = location.split(",");
@@ -144,6 +180,7 @@ public class ScrapeHelper {
 
         try {
 		  // Why this exists : int currentPageLimit = 1;
+            // TODO : Get an estimate upper bound for this and let this auto terminate
 		  for (int k=0;k<reviewPageLimits;k++) {
 			  String currentLocation = valueLocation.toString();
 			  currentLocation =  currentLocation.substring(0,currentLocation.length()-1)  + k ;
@@ -180,19 +217,35 @@ public class ScrapeHelper {
                 reviewContent = reviewContent.replace("\\u003d\\", "=");
                 reviewContent = reviewContent.replace("\\u003d", "=");
 
-				Document passedReviews = Jsoup.parse(reviewContent);
+                String review_id = null; int reviewPageCount = 0;
+
+                Document passedReviews = Jsoup.parse(reviewContent);
 				reviewElems = passedReviews.getElementsByClass("single-review");
                 reviewCount += reviewElems.size(); // Update the review count
 
                 for (Iterator<Element> iterator = reviewElems.iterator(); iterator.hasNext();) {
 				        Element element = (Element) iterator.next();
+                        // Get the author id and validate it was not previous page details
+                        if (review_id 0= null &&  )
+                        reviewBuffer.append(getValueFromNodeAttr(element,"div,class", "review-header,data-reviewid")+" :: ");
+                        reviewBuffer.append(getReviewAuthorIDFromMultipleSelect(element, "span,class,a,href", "author-name,href")+" :: ");
 						reviewBuffer.append(getTextFromNodeSelect(element,"span,class", "author-name")+" :: ");
 						reviewBuffer.append(getTextFromNodeSelect(element,"span,class", "review-date")+" :: ");
 						//reviewBuffer.append(getTextFromNodeIfAvailable(element)+" :: "); // Update : Phone details are not available now
                         reviewBuffer.append("none"+" :: "); // TODO : remove this
 						reviewBuffer.append(getValueFromNodeAttr(element,"div,class", "tiny-star star-rating-non-editable-container,aria-label")+" :: ");
 						reviewBuffer.append(getTextFromNodeSelect(element,"span,class", "review-title")+" :: ");
-						reviewBuffer.append(getTextFromNodeSelect(element,"div,class", "review-body")+" :: ");
+
+                        // Format the review body
+                        String review_body = getTextFromNodeSelect(element,"div,class", "review-body");
+                        int trimStartIndex = review_body.indexOf("Full Review");
+                        if ((review_body.length() - trimStartIndex) == 11){
+                            review_body = review_body.substring(0, trimStartIndex);
+                        }
+
+
+                    reviewBuffer.append(review_body+" :: ");
+
                         //TODO : Add the developer reply to the DB also (if exists)
 						reviewBuffer.append(" :::: ");
                     // Update the HashMap

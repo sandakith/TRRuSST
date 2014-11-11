@@ -1,5 +1,5 @@
-  drop table APP.MarketItem;
-  drop table APP.MarketItemReviews;
+drop table APP.MarketItem;
+drop table APP.MarketItemReviews;
     
 -- \************** DDS.MarketItem *******************************\
 create table APP.MarketItem 
