@@ -190,8 +190,9 @@ public class ScrapeHelper {
                 reviewPageLimits = (int)(currentReviewCount/20);
             }
 
-            for (int k = 0; k < (reviewPageLimits + 1); k++) {
-
+            //for (int k = 0; k < (reviewPageLimits + 1); k++) {
+            int k = 0;
+            while (true){
                 if (reviewLimitReached){
                     break;
                 }
@@ -232,7 +233,9 @@ public class ScrapeHelper {
                         reviewBuffer.append(getTextFromNodeSelect(element, "span,class", "author-name") + " :: ");
                         reviewBuffer.append(getTextFromNodeSelect(element, "span,class", "review-date") + " :: ");
                         reviewBuffer.append(getValueFromNodeAttr(element, "div,class", "tiny-star star-rating-non-editable-container,aria-label") + " :: ");
-                        reviewBuffer.append(getTextFromNodeSelect(element, "span,class", "review-title") + " :: ");
+                        String reviewTitle = getTextFromNodeSelect(element, "span,class", "review-title");
+                        if (reviewTitle.length() >= 200){ reviewTitle = reviewTitle.substring(0,198); }
+                        reviewBuffer.append(reviewTitle + " :: ");
 
                         // Format the review body
                         String review_body = getTextFromNodeSelect(element, "div,class", "review-body");
@@ -240,6 +243,7 @@ public class ScrapeHelper {
                         if ((review_body.length() - trimStartIndex) == 11) {
                             review_body = review_body.substring(0, trimStartIndex);
                         }
+                        if (review_body.length() >= 3000){ review_body = review_body.substring(0,2998); }
 
 
                         reviewBuffer.append(review_body + " :: ");
@@ -256,12 +260,16 @@ public class ScrapeHelper {
                 System.out.println("Current Review Count : " + reviewCount);
                 reviewCount = 0; // Set the review count to zero
                 totalReviewCount += reviewElements.size(); // Update the review count
+                k += 1;
+                Thread.sleep(900); // Sleep near a 1 S before attempting again
             }
         } catch (StringIndexOutOfBoundsException e) {
             // Continue printing the stack trace
             e.printStackTrace();
         }catch (IOException e) {
             // Continue printing the stack trace
+            e.printStackTrace();
+        } catch (InterruptedException e) {
             e.printStackTrace();
         }
         return reviewBuffer.toString();
