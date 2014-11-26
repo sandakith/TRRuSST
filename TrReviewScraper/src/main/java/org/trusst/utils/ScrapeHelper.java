@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
+import java.util.Random;
 
 import org.jsoup.Connection.Method;
 import org.jsoup.Jsoup;
@@ -18,6 +19,9 @@ public class ScrapeHelper {
     // TODO : refactor this page
     // Categorize scraping methods as : USED / DEPRECATED
     // Extend this and create a Droid Marketplace Scrape Helper
+
+    // Statically created, so that it is not re-seeded every call.
+    public static Random randomHelper = new Random();
 
     public static String getTitleFromDocument(Document doc) {
         String title = (doc!=null)?doc.title():"none";
@@ -199,7 +203,7 @@ public class ScrapeHelper {
 
                 String currentLocation = valueLocation.toString();
                 currentLocation =  currentLocation.substring(0,currentLocation.length()-1)  + k ;
-                String body = Jsoup.connect(currentLocation).method(Method.POST).ignoreContentType(true).execute().body();
+                String body = Jsoup.connect(currentLocation).timeout(0).method(Method.POST).ignoreContentType(true).execute().body();
                 int startIndex = body.indexOf("\\u003c");
                 int endIndex = body.indexOf("\",",startIndex);
 
@@ -257,11 +261,13 @@ public class ScrapeHelper {
                         reviewMap.put(getTextFromNodeSelect(element,"span,class", "author-name"),getTextFromNodeSelect(element,"span,class", "review-title"));
                     }
                 }
-                System.out.println("Current Review Count : " + reviewCount);
+                System.out.println("Current Review Count : " + totalReviewCount);
                 reviewCount = 0; // Set the review count to zero
                 totalReviewCount += reviewElements.size(); // Update the review count
                 k += 1;
-                Thread.sleep(900); // Sleep near a 1 S before attempting again
+                // Sleeping the thread for a random time between 3 S and 1 S
+                int randomNum = randomHelper.nextInt((3000 - 900) + 1) + 900;
+                Thread.sleep(randomNum); // Sleep near a 1 S before attempting again
             }
         } catch (StringIndexOutOfBoundsException e) {
             // Continue printing the stack trace
@@ -284,7 +290,6 @@ public class ScrapeHelper {
             return resultParts[0];
         }
     }
-
 
     /////////////////////////////////////////////////////////////////////////////
     // Refactoring Code

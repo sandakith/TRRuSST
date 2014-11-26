@@ -97,6 +97,7 @@ public class AzSoftwareDAO {
     public void setSummary(String summary) {
         this.summary = summary;
     }
+
 }
 
 

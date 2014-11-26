@@ -23,7 +23,6 @@ create table APP.MarketItem
 	  threeStarts 			varchar(50) not null,
 	  twoStars 				varchar(50) not null,  
 	  oneStar 				varchar(50) not null
-	  
    );
 alter table app.MarketItem add constraint mi_id unique (id);
 

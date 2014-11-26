@@ -11,7 +11,7 @@ import java.sql.SQLException;
 public class DBConstants {
 
     // Derby database connection details
-    public static final String DERBY_DB_DRIVER              = "org.apache.derby.jdbc.ClientDrive" ;
+    public static final String DERBY_DB_DRIVER              = "org.apache.derby.jdbc.ClientDriver" ;
     public static final String DERBY_DB_CON_URL             = "jdbc:derby://localhost:1527/AmazonDB" ;
     public static final String DERBY_DB_USER                = "admin" ;
     public static final String DERBY_DB_PASSWORD            = "admin" ;

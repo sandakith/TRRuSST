@@ -55,20 +55,26 @@ public class DDSConstants {
 	public static final String ITEM_CONTENT_RATING = "ContentRating"; 
 	
 	// Navigation Operators 
-	public static final String NAV_START_OP_EQ = "start="; 
+	public static final String NAV_START_OP_EQ = "start=";
 
-	//Test Scenario Constants
+    //Test Scenario Constants
 
-    // public static final String TEST_APP_LOCATION = "https://play.google.com/store/apps/details?id=com.livares.keralahangouts";   // (Has Only 1 review)
+    public static final String TEST_APP_LOCATION = "https://play.google.com/store/apps/details?id=com.livares.keralahangouts";   // (Has Only 1 review)
     // public static final String TEST_APP_LOCATION = "https://play.google.com/store/apps/details?id=com.lri.keralaattractions";    // Has 15 reviews including anonymous
     // public static final String TEST_APP_LOCATION = "https://play.google.com/store/apps/details?id=com.zagmoid.blocks3d";         // (Has Only 2 pages of reviews)
-    public static final String TEST_APP_LOCATION = "https://play.google.com/store/apps/details?id=com.zagmoid.carrom3d";         // Has two full pages
+    // public static final String TEST_APP_LOCATION = "https://play.google.com/store/apps/details?id=com.zagmoid.carrom3d";         // Has two full pages
     // public static final String TEST_APP_LOCATION = "https://play.google.com/store/apps/details?id=com.livares.kiddiedoodle.mal";
     // public static final String TEST_APP_LOCATION = "https://play.google.com/store/apps/details?id=com.yahoo.mobile.client.android.weather";
     // public static final String TEST_APP_LOCATION = "https://play.google.com/store/apps/details?id=com.accuweather.paid.android";
     // public static final String TEST_APP_LOCATION = "https://play.google.com/store/apps/details?id=com.shake.charge"; (They Removed)
 
-	
+    // Weather forecast apps
+    //public static final String TEST_APP_LOCATION = "https://play.google.com/store/apps/details?id=com.gau.go.launcherex.gowidget.weatherwidget";
+    //public static final String TEST_APP_LOCATION = "https://play.google.com/store/apps/details?id=com.weather.Weather";
+
+
+
+
 
 
 }
