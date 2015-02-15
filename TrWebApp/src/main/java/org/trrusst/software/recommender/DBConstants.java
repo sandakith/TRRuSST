@@ -1,8 +1,4 @@
-package org.trrusst.reviews.db;
-
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.SQLException;
+package org.trrusst.software.recommender;
 
 /**
  * DB based String Constants are encoded here.

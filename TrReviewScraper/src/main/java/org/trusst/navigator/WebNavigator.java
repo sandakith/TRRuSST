@@ -55,11 +55,10 @@ public class WebNavigator {
 
 				// call web scraper to populate app market 
 				webScrapper = new WebScrapper();
-				System.out.print("START:"+  DDSUtils.getCurrentDateTime() +":"+ urlToScrape  );
+				System.out.print("START:"+  DDSUtils.getCurrentDateTime() +": "+ urlToScrape  );
 				navigateSucess = webScrapper.scrape(urlToScrape, scrapableConfig);
 				System.out.print(" | Scraping successful | ");
-				System.out.print("END:"+  DDSUtils.getCurrentDateTime() +"\n");
-
+				System.out.print(" END:"+  DDSUtils.getCurrentDateTime() +"\n");
 
 			}
 

@@ -14,6 +14,7 @@
 
     <dependencies>
         <dependency>
+<<<<<<< HEAD
             <groupId>cc.mallet</groupId>
             <artifactId>mallet</artifactId>
             <version>2.0.7</version>
@@ -34,6 +35,8 @@
             <version>1.1.2</version>
         </dependency>
         <dependency>
+=======
+>>>>>>> 9c0fb516606b8565569e2590b92b2b0227a1251c
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
             <version>4.8.1</version>
@@ -44,7 +47,6 @@
 
     <groupId>org.trrusst.servicerecommender</groupId>
     <artifactId>TrServiceRecommender</artifactId>
-    <packaging>war</packaging>
     <version>1.0-SNAPSHOT</version>
     <build>
         <finalName>ServiceTaggerWebApp</finalName>

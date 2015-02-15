@@ -1,0 +1,195 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<marketConfig>
+	<property>
+		<name>AppsArcadeTopSellingPaid</name>
+		<type>App</type>
+		<url>https://play.google.com/store/apps/category/</url>
+		<urlValue>BRAIN,CARDS,CASUAL,GAME_WALLPAPER,RACING,SPORTS_GAMES,ARCADE,GAME_WIDGETS/collection/topselling_paid,topselling_free</urlValue>
+		<navigation>?start=0</navigation>
+		<navigationValue>24</navigationValue>
+		<location>a[class=title]</location>
+		<locationValue>title</locationValue>
+	</property>
+
+<!-- 	
+
+	<property>
+		<name>AppsArcadeTopSellingPaid</name>
+		<type>App</type>
+		<url>https://play.google.com/store/apps/category/</url>
+		<urlValue>BOOKS_AND_REFERENCE,HEALTH_AND_FITNESS,LIBRARIES_AND_DEMO,MEDIA_AND_VIDEO,MUSIC_AND_AUDIO,NEWS_AND_MAGAZINES,TRAVEL_AND_LOCAL/collection/topselling_paid,topselling_free</urlValue>
+		<navigation>?start=0</navigation>
+		<navigationValue>24</navigationValue>
+		<location>a[class=title]</location>
+		<locationValue>title</locationValue>
+	</property>
+	
+	<property>
+		<name>AppsArcadeTopSellingPaid</name>
+		<type>App</type>
+		<url>https://play.google.com/store/apps/category/</url>
+		<urlValue>WIDGETS,TRANSPORTATION,PRODUCTIVITY,PHOTOGRAPHY,PERSONALIZATION,MEDICAL,LIFESTYLE,COMMUNICATION/collection/topselling_paid,topselling_free</urlValue>
+		<navigation>?start=0</navigation>
+		<navigationValue>24</navigationValue>
+		<location>a[class=title]</location>
+		<locationValue>title</locationValue>
+	</property>
+	
+	<property>
+		<name>AppsArcadeTopSellingPaid</name>
+		<type>App</type>
+		<url>https://play.google.com/store/apps/category/</url>
+		<urlValue>BUSINESS,COMICS,SPORTS,SHOPPING,TOOLS,SOCIAL,EDUCATION,FINANCE/collection/topselling_paid,topselling_free</urlValue>
+		<navigation>?start=0</navigation>
+		<navigationValue>24</navigationValue>
+		<location>a[class=title]</location>
+		<locationValue>title</locationValue>
+	</property>
+
+	<property>
+		<name>AppsArcadeTopSellingPaid</name>
+		<type>App</type>
+		<url>https://play.google.com/store/apps/category/</url>
+		<urlValue>BRAIN,CARDS,CASUAL,GAME_WALLPAPER,RACING,SPORTS_GAMES,GAME_WIDGETS/collection/topselling_paid,topselling_free</urlValue>
+		<navigation>?start=0</navigation>
+		<navigationValue>24</navigationValue>
+		<location>a[class=title]</location>
+		<locationValue>title</locationValue>
+	</property>
+	
+	<property>
+		<name>AppsArcadeTopSellingPaid</name>
+		<type>App</type>
+		<url>https://play.google.com/store/apps/category/</url>
+		<urlValue>ARCADE/collection/topselling_free</urlValue>
+		<navigation>?start=0</navigation>
+		<navigationValue>24</navigationValue>
+		<location>a[class=title]</location>
+		<locationValue>title</locationValue>
+	</property>
+
+	<property>
+		<name>AppsArcadeTopSellingPaid</name>
+		<type>App</type>
+		<url>https://play.google.com/store/</url>
+		<urlValue>search</urlValue>
+		<navigation>?q=weather*c=apps*start=0</navigation>
+		<navigationValue>24</navigationValue>
+		<location>a[class=title]</location>
+		<locationValue>title</locationValue>
+	</property>
+	
+ 	<property>
+		<name>AppsArcadeTopSellingPaid</name>
+		<type>App</type>
+		<url>https://play.google.com/store/</url>
+		<urlValue>search</urlValue>
+		<navigation>?q=traffic*c=apps*start=0</navigation>
+		<navigationValue>24</navigationValue>
+		<location>a[class=title]</location>
+		<locationValue>title</locationValue>
+	</property>
+	
+	<property>
+		<name>AppsArcadeTopSellingPaid</name>
+		<type>App</type>
+		<url>https://play.google.com/store/</url>
+		<urlValue>search</urlValue>
+		<navigation>?q=Flights*c=apps*start=0</navigation>
+		<navigationValue>24</navigationValue>
+		<location>a[class=title]</location>
+		<locationValue>title</locationValue>
+	</property>
+
+	<property>
+		<name>AppsArcadeTopSellingPaid</name>
+		<type>App</type>
+		<url>https://play.google.com/store/</url>
+		<urlValue>search</urlValue>
+		<navigation>?q=Hotels*c=apps*start=0</navigation>
+		<navigationValue>24</navigationValue>
+		<location>a[class=title]</location>
+		<locationValue>title</locationValue>
+	</property>	
+
+	<property>
+		<name>AppsArcadeTopSellingPaid</name>
+		<type>App</type>
+		<url>https://play.google.com/store/</url>
+		<urlValue>search</urlValue>
+		<navigation>?q=Gas*c=apps*start=0</navigation>
+		<navigationValue>24</navigationValue>
+		<location>a[class=title]</location>
+		<locationValue>title</locationValue>
+	</property>
+	
+	<property>
+		<name>AppsArcadeTopSellingPaid</name>
+		<type>App</type>
+		<url>https://play.google.com/store/</url>
+		<urlValue>search</urlValue>
+		<navigation>?q=Bank*c=apps*start=0</navigation>
+		<navigationValue>24</navigationValue>
+		<location>a[class=title]</location>
+		<locationValue>title</locationValue>
+	</property>	
+	
+	<property>
+		<name>AppsArcadeTopSellingPaid</name>
+		<type>App</type>
+		<url>https://play.google.com/store/</url>
+		<urlValue>search</urlValue>
+		<navigation>?q=Business*c=apps*start=0</navigation>
+		<navigationValue>24</navigationValue>
+		<location>a[class=title]</location>
+		<locationValue>title</locationValue>
+	</property>	
+	
+	<property>
+		<name>AppsArcadeTopSellingPaid</name>
+		<type>App</type>
+		<url>https://play.google.com/store/</url>
+		<urlValue>search</urlValue>
+		<navigation>?q=Comics*c=apps*start=0</navigation>
+		<navigationValue>24</navigationValue>
+		<location>a[class=title]</location>
+		<locationValue>title</locationValue>
+	</property>	
+	
+	<property>
+		<name>AppsArcadeTopSellingPaid</name>
+		<type>App</type>
+		<url>https://play.google.com/store/</url>
+		<urlValue>search</urlValue>
+		<navigation>?q=Sports*c=apps*start=0</navigation>
+		<navigationValue>24</navigationValue>
+		<location>a[class=title]</location>
+		<locationValue>title</locationValue>
+	</property>	
+	
+	<property>
+		<name>AppsArcadeTopSellingPaid</name>
+		<type>App</type>
+		<url>https://play.google.com/store/</url>
+		<urlValue>search</urlValue>
+		<navigation>?q=Shopping*c=apps*start=0</navigation>
+		<navigationValue>24</navigationValue>
+		<location>a[class=title]</location>
+		<locationValue>title</locationValue>
+	</property>	
+	
+	<property>
+		<name>AppsArcadeTopSellingPaid</name>
+		<type>App</type>
+		<url>https://play.google.com/store/</url>
+		<urlValue>search</urlValue>
+		<navigation>?q=Finance*c=apps*start=0</navigation>
+		<navigationValue>24</navigationValue>
+		<location>a[class=title]</location>
+		<locationValue>title</locationValue>
+	</property>	
+		
+-->
+
+</marketConfig>

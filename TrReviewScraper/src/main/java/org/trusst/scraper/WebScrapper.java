@@ -46,8 +46,9 @@ public class WebScrapper {
 
 				// Scrape each property
 				String scrapedProperty = scrapeProperty(link, doc, itemProperty);
-
-				// Add to item part lsit
+                // TODO : REMOTE THIS SYSOUT
+                System.out.println(itemProperty.getName() + " : " + scrapedProperty);
+                // Add to item part lsit
 				listOfItemParts.add(new ItemPart(itemProperty.getName(),scrapedProperty));
 			}
 
@@ -72,35 +73,31 @@ public class WebScrapper {
 		}
 		if (DDSConstants.SCRAPE_TITLE.equals(itemProperty.getType())) {
 			scrapedResult = ScrapeHelper.getTitleFromDocument(doc);
-			;
 		}
 		if (DDSConstants.SCRAPE_DIV_TEXT.equals(itemProperty.getType())) {
-			scrapedResult = ScrapeHelper.getTextFromDivID(doc,
-					itemProperty.getLocation());
+			scrapedResult = ScrapeHelper.getValueFromNodeAttr(doc, itemProperty.getLocation(), itemProperty.getLocationValue());
+
 		}
-		if (DDSConstants.SCRAPE_DIV_AVAILABLE_TEXT.equals(itemProperty
-				.getType())) {
-			scrapedResult = ScrapeHelper.getTextFromAvailableDivID(doc,
-					itemProperty.getLocation());
+		if (DDSConstants.SCRAPE_DIV_AVAILABLE_TEXT.equals(itemProperty.getType())) {
+			scrapedResult = ScrapeHelper.getTextFromAvailableDivID(doc, itemProperty.getLocation());
 		}
+        if (DDSConstants.SCRAPE_NODE_SELECT_TEXT.equals(itemProperty.getType())) {
+            scrapedResult = ScrapeHelper.getTextFromNodeSelect(doc, itemProperty.getLocation(), itemProperty.getLocationValue());
+        }
+        if (DDSConstants.SCRAPE_NODE_SELECT_ATTR.equals(itemProperty.getType())) {
+            scrapedResult = ScrapeHelper.getValueFromNodeAttr(doc, itemProperty.getLocation(), itemProperty.getLocationValue());
+        }
 		if (DDSConstants.SCRAPE_A_CLASS.equals(itemProperty.getType())) {
-			scrapedResult = ScrapeHelper.getTextFromAClass(doc,
-					itemProperty.getLocation());
+			scrapedResult = ScrapeHelper.getTextFromAClass(doc, itemProperty.getLocation());
 		}
 		if (DDSConstants.SCRAPE_NODE_ITEMPROP.equals(itemProperty.getType())) {
-			scrapedResult = ScrapeHelper
-					.getTextFromNodeItemProp(doc, itemProperty.getLocation(),
-							itemProperty.getLocationValue());
+			scrapedResult = ScrapeHelper .getTextFromNodeItemProp(doc, itemProperty.getLocation(), itemProperty.getLocationValue());
 		}
 		if (DDSConstants.SCRAPE_MULTIPLE.equals(itemProperty.getType())) {
-			scrapedResult = ScrapeHelper.getMultipleTextFromMultipleSelects(
-					doc, itemProperty.getLocation(),
-					itemProperty.getLocationValue());
+			scrapedResult = ScrapeHelper.getMultipleTextFromMultipleSelects( doc, itemProperty.getLocation(), itemProperty.getLocationValue());
 		}
 		if (DDSConstants.SCRAPE_POST_MULTIPLE.equals(itemProperty.getType())) {
-			scrapedResult = ScrapeHelper.getMultiplePostsFromMultipleSelects(
-					link, doc, itemProperty.getLocation(),
-					itemProperty.getLocationValue());
+			scrapedResult = ScrapeHelper.getMultiplePostsFromMultipleSelects( link, doc, itemProperty.getLocation(), itemProperty.getLocationValue());
 		}
 
 		return scrapedResult;
